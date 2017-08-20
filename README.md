@@ -12,4 +12,4 @@ C++控制台版消消乐
 
 
 它长这个熊样：
-![image](/img.jpg)
+![image](/tempbh1.PNG)

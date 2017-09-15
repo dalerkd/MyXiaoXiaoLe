@@ -121,21 +121,6 @@ bool CXXL::PhyEngine()
 
 			const int di = m_map_h-1;
 			/*next_pai从倒数第二排的下一排开始，即最后一排*/
-			//下面是性能改动,测试未发现问题
-			//for (int next_pai=pai+1;next_pai<=di;++next_pai)
-			//{
-			//	if (_MAP[next_pai*m_map_x+lp]==t_black)//下面一格子为空则交互
-			//	{//swap
-			//		work = true;
-
-			//		_MAP[next_pai*m_map_x+lp] = _MAP[(next_pai-1)*m_map_x+lp];
-			//		_MAP[(next_pai-1)*m_map_x+lp] = t_black;
-			//	}
-			//	else
-			//	{
-			//		break;
-			//	}
-			//}//end for
 			for (int next_pai=pai+1,nowOffset/*当前偏移的下一排*/=ThisPai+lp;next_pai<=di;++next_pai,nowOffset+=m_map_x)
 			{
 				/*用 nowOffset 代替"next_pai*m_map_x+lp"*/
@@ -194,71 +179,7 @@ bool CXXL::检查并消除符合规则的模块()
 			char m_a=0,m_b=0,m_d=0,m_e=0,m_f=0,m_g=0,m_h=0,m_i=0;
 			GetZVWW(FACK_P,m_a,m_b,m_d,m_e,m_g,m_f,m_h,m_i);
 
-			///*找到一种成功情况即可*/
-			//if (m_b==m_v&&m_a==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[lp*m_map_x+hh-1]=t_black;
-			//	_MAP[lp*m_map_x+hh-2]=t_black;
 
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else if(m_b==m_v&&m_d==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[lp*m_map_x+hh-1] = t_black;
-			//	_MAP[lp*m_map_x+hh+1] = t_black;
-
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else if(m_d==m_v&&m_e==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[lp*m_map_x+hh+1] = t_black;
-			//	_MAP[lp*m_map_x+hh+2] = t_black;
-
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else if(m_g==m_v&&m_f==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[(lp-1)*m_map_x+hh] = t_black;
-			//	_MAP[(lp-2)*m_map_x+hh] = t_black;
-
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else if (m_g==m_v&&m_h==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[(lp-1)*m_map_x+hh] = t_black;
-			//	_MAP[(lp+1)*m_map_x+hh] = t_black;
-
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else if(m_h==m_v&&m_i==m_v)
-			//{
-			//	_MAP[lp*m_map_x+hh] = t_black;
-			//	_MAP[(lp+1)*m_map_x+hh] = t_black;
-			//	_MAP[(lp+2)*m_map_x+hh] = t_black;
-
-			//	work = true;
-			//	goto 消除End;
-			//	//break;
-			//}
-			//else
-			//{
-			//	continue;
-			//}
 			/*找到一种成功情况即可*/
 			if (m_b==m_v&&m_a==m_v)
 			{
